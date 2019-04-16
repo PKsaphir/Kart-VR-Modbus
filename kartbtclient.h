@@ -22,7 +22,7 @@ class KartBtClient:public QObject
 
        //init classe metier avec nom de fichier csv en arg
 
-    explicit  KartBtClient(const QString& configFile, QObject *parent = 0);
+    explicit  KartBtClient(const QString& configFile, QObject *parent = nullptr);
 
 
 
