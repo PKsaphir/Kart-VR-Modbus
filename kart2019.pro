@@ -22,6 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     kartbtclient.cpp \
+    qammodbusdata.cpp \
     qammodbusmap.cpp \
     qamabstractserver.cpp \
     qammodbusmapviewer.cpp \
