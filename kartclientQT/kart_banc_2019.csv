@@ -1,0 +1,32 @@
+﻿# Mise à jour PM 9/3/19
+#adresse ip du serveur a remplacer par 192.168.20.205 sur automate reel !
+HOST;192.168.20.205
+PORT;502
+INFO;Kart Banc Test 2019 !
+
+# holding registers
+# commandes du Enable et Run + Mode local ou distant
+40001;2; FFFF ;local_distant; mode local ou distant ; Float ;0.0
+40003;2; FFFF ;on_off_run ; start stop; Float ;0.0
+40005;2; FFFF ;on_off_enable ;Enable Variateur Parvex; Float ;0.0
+
+# mesures des parametres dynamiques
+40015;2; FFFF ;vit_simu;vitesse moteur (tr/mn); Float ;0.0
+40017;2; FFFF ;couple_simu;couple moteur Nm; Float ;0.0
+
+# parametres simulateur conduite + essai banc
+40019;2; FFFF ;masse_pilote;masse du pilote (kg);Float ;80.0
+# temps du parcours
+40021;2; FFFF ;temps_parcours;temps absolu du parcours ; Float ;0.0
+40023;2;FFFF ;cons_pente;consigne de pente piste (%) ;Float ;0.0
+
+# mesures courants de "decharges"
+40025;2;FFFF ;courant_batt1;courant reel dans batterie 1 ?  ;Float ;0.0
+40027;2;FFFF ;puissance_totale_batt;puissance totale 4 batteries en Watts  ;Float ;0.0
+40029;2;FFFF ;charge_elect_totale;charge Q (en coulomb:C ) des 4 batteries ;Float ;0.0
+
+# mesures tensions batteries en charge et/ou utilisation !!
+40033;2;FFFF ;tension_batt1;tension reelle dans batterie 1   ;Float ;0.0
+40035;2;FFFF ;tension_batt2;tension reelle dans batterie 2   ;Float ;0.0
+40037;2;FFFF ;tension_batt3;tension reelle dans batterie 3   ;Float ;0.0
+40039;2;FFFF ;tension_batt4;tension reelle dans batterie 4   ;Float ;0.0
