@@ -68,54 +68,66 @@ void KartBtClient::readConsole()
 
                     //lecture vitesse  bt->getVitSimu() LECTURE MODBUS en reseau ... et mise dans attribut   de l'objet KartBtClient
 
-                    cout << "Vitesse simulateur (arbre roue) " << qPrintable(QString::number(this->getVitSimu() , 'f', 6 )) << "tr/mn " << endl ;
+                    cout << "Vitesse simulateur (arbre roue) " << qPrintable(QString::number(this->get_vit_simu() , 'f', 6 )) << " tr/mn " << endl ;
+                    cout << "Vitesse simulateur (arbre roue) " << qPrintable(QString::number(this->getVitSimu() , 'f', 6 )) << " tr/mn " << endl ;
 
     }
     if(( parse.at(0) == "2" )){
 
-                    cout << "Couple " << qPrintable( QString::number(this->getCoupleSimu(),'f',6) ) << "% " << endl ;
+                    cout << "Couple " << qPrintable( QString::number(this->get_couple_simu(),'f',6) ) << " " << endl ;
+                    cout << "Couple " << qPrintable( QString::number(this->getCoupleSimu(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "3" )){
 
-                    cout << "Masse " << qPrintable( QString::number(this->getMasse_Pilote(),'f',6) ) << "% " << endl ;
+                    cout << "Masse " << qPrintable( QString::number(this->get_masse_pilote(),'f',6) ) << " kg " << endl ;
+                    cout << "Masse " << qPrintable( QString::number(this->getMasse_Pilote(),'f',6) ) << " kg " << endl ;
     }
     if(( parse.at(0) == "4" )){
 
                     //lecture pente  par bt->getConsignePente()  LECTURE MODBUS en reseau ...et mise dans attribut pente de l'objet KartBtClient
 
+                    cout << "Pente " << qPrintable( QString::number(this->get_cons_pente(),'f',6) ) << "% " << endl ;
                     cout << "Pente " << qPrintable( QString::number(this->getConsignePente(),'f',6) ) << "% " << endl ;
     }
     if(( parse.at(0) == "5" )){
 
-                    cout << "Local_distant " << qPrintable( QString::number(this->getLocal_Distant(),'f',6) ) << "% " << endl ;
+                    cout << "Local_distant " << qPrintable( QString::number(this->get_mode(),'f',6) ) << " " << endl ;
+                    cout << "Local_distant " << qPrintable( QString::number(this->getLocal_Distant(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "6" )){
 
-                    cout << "Courant_charge_batt " << qPrintable( QString::number(this->getCourantChargeBatt(),'f',6) ) << "% " << endl ;
+                    cout << "Courant_charge_batt " << qPrintable( QString::number(this->get_courant_charge_batt(),'f',6) ) << " " << endl ;
+                    cout << "Courant_charge_batt " << qPrintable( QString::number(this->getCourantChargeBatt(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "7" )){
 
-                    cout << "Puissance_totale_batt " << qPrintable( QString::number(this->getPuissanceTotaleBatt(),'f',6) ) << "% " << endl ;
+                    cout << "Puissance_totale_batt " << qPrintable( QString::number(this->get_puissance_totale(),'f',6) ) << " " << endl ;
+                    cout << "Puissance_totale_batt " << qPrintable( QString::number(this->getPuissanceTotaleBatt(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "8" )){
 
-                    cout << "Tension_batt1 " << qPrintable( QString::number(this->getTensionBatt1(),'f',6) ) << "% " << endl ;
+                    cout << "Tension_batt1 " << qPrintable( QString::number(this->get_tension_batt1(),'f',6) ) << " " << endl ;
+                    cout << "Tension_batt1 " << qPrintable( QString::number(this->getTensionBatt1(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "9" )){
 
-                    cout << "Tension_batt2 " << qPrintable( QString::number(this->getTensionBatt2(),'f',6) ) << "% " << endl ;
+                    cout << "Tension_batt2 " << qPrintable( QString::number(this->get_tension_batt2(),'f',6) ) << " " << endl ;
+                    cout << "Tension_batt2 " << qPrintable( QString::number(this->getTensionBatt2(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "10" )){
 
-                    cout << "Tension_batt3 " << qPrintable( QString::number(this->getTensionBatt3(),'f',6) ) << "% " << endl ;
+                    cout << "Tension_batt3 " << qPrintable( QString::number(this->get_tension_batt3(),'f',6) ) << " " << endl ;
+                    cout << "Tension_batt3 " << qPrintable( QString::number(this->getTensionBatt3(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "11" )){
 
-                    cout << "Tension_batt4 " << qPrintable( QString::number(this->getTensionBatt4(),'f',6) ) << "% " << endl ;
+                    cout << "Tension_batt4 " << qPrintable( QString::number(this->get_tension_batt4(),'f',6) ) << " " << endl ;
+                    cout << "Tension_batt4 " << qPrintable( QString::number(this->getTensionBatt4(),'f',6) ) << " " << endl ;
     }
     if(( parse.at(0) == "12" )){
 
-                    cout << "Charge_totale_batt " << qPrintable( QString::number(this->getChargeTotaleBatt(),'f',6) ) << "% " << endl ;
+                    cout << "Charge_totale_batt " << qPrintable( QString::number(this->get_charge_totale_batt(),'f',6) ) << " " << endl ;
+                    cout << "Charge_totale_batt " << qPrintable( QString::number(this->getChargeTotaleBatt(),'f',6) ) << " " << endl ;
     }
 
 
@@ -126,8 +138,10 @@ void KartBtClient::readConsole()
                     //ecriture masse pilote
 
 
+                    this->set_masse_pilote(parse.at(1).toFloat());
                     this->setMasse_Pilote(parse.at(1));
-        cout << "masse pilote  " << qPrintable(  QString::number(this ->getMasse_Pilote() , 'f', 6)) << "kg" << endl;
+        cout << "masse pilote  " << qPrintable(  QString::number(this ->get_masse_pilote() , 'f', 6)) << " kg" << endl;
+        cout << "masse pilote  " << qPrintable(  QString::number(this ->getMasse_Pilote() , 'f', 6)) << " kg" << endl;
 
 
 
@@ -141,7 +155,9 @@ void KartBtClient::readConsole()
     if(( parse.at(0) == "14" ) && ( parse.size() >= 2 )){    //attention 2 arguments seult sur ligne de commande !!  >=
 
                     // ecriture consigne pente suppose être en distant (votre IHM...)  Cf csv
+                    this->set_cons_pente(  parse.at(1).toFloat());
                     this->setConsignePente(  parse.at(1));
+        cout << "consigne pente  " << qPrintable(  QString::number(this ->get_cons_pente() , 'f', 6)) << "%" << endl;
         cout << "consigne pente  " << qPrintable(  QString::number(this ->getConsignePente() , 'f', 6)) << "%" << endl;
 
     }
@@ -151,7 +167,22 @@ void KartBtClient::readConsole()
 
     }
 
-    if(( parse.at(0) == "15" ) ){ //lecture mode local / distant
+
+    if(( parse.at(0) == "15" ) && ( parse.size() >= 2 )){    //attention 2 arguments seult sur ligne de commande !!  >=
+
+                    this->set_mode(  parse.at(1).toInt());
+        cout << "local distant  " << qPrintable(  QString::number(this ->get_mode() , 'f', 6)) << " " << endl;
+        cout << "local distant  " << qPrintable(  QString::number(this ->getLocal_Distant() , 'f', 6)) << " " << endl;
+
+    }
+    //erreur
+    else if(( parse.at(0) == "15" ) && ( parse.size() ==1 )){
+        cerr << "Entrez 15  et la valeur du mode (0 = local, 1 = distant)" << endl;
+
+    }
+
+
+    if(( parse.at(0) == "16" ) ){ //lecture mode local / distant
 
                 //lecture mode
 
@@ -163,13 +194,10 @@ void KartBtClient::readConsole()
     }
 
 
-
-
-
     //courant decharge batterie : celui quand on se sert du kart
-    if(( parse.at(0) == "16" ) && ( parse.size() == 1 )){    //attention 1 seul argument seult sur ligne de commande !!  >=
+    if(( parse.at(0) == "17" ) && ( parse.size() == 1 )){    //attention 1 seul argument seult sur ligne de commande !!  >=
 
-        float courant_decharge = this->getCourantBatt(  );
+        float courant_decharge = this->get_courant_batt1()  ;
                courant_decharge /= 1000.0f;  //car facteur 10000 pour 10V dans prog automate
 
 
@@ -179,8 +207,8 @@ void KartBtClient::readConsole()
 
     }
     //erreur
-    else if(( parse.at(0) == "16" ) && ( parse.size() >=2 )){
-        cerr << "entrez 16  " << endl;
+    else if(( parse.at(0) == "17" ) && ( parse.size() >=2 )){
+        cerr << "entrez 17  " << endl;
 
     }
 
@@ -204,11 +232,12 @@ void KartBtClient::readConsole()
     cout << "11 : Lecture tension batt4 " << endl;
     cout << "12 : Lecture charge totale batt " << endl;
 
-    cout << "13 : Ecriture masse pilote kg; tapez 13 [0,n]" << endl;
-    cout << "14 : Ecriture consigne pente %;  tapez 14 [0,n] " << endl;
-    cout << "15 : Ecriture local_distant;  tapez 15 [0,n] " << endl;
+    cout << "13 : Ecriture masse pilote kg  ; tapez 13 [0,n]" << endl;
+    cout << "14 : Ecriture consigne pente %  ;  tapez 14 [0,n] " << endl;
+    cout << "15 : Ecriture local_distant  ;  tapez 15 [0,n] " << endl;
 
-    cout << "16 : Lecture courant reel decharge batterie ; tapez 16   " << endl << endl;
+    cout << "16 : Lecture local_distant " << endl;
+    cout << "17 : Lecture courant reel decharge batterie   " << endl << endl;
 
 
 
@@ -231,7 +260,7 @@ void KartBtClient::qSleep(int ms)
     Sleep(uint(ms));
 #else
     struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
-    nanosleep(&ts, NULL);
+    nanosleep(&ts, nullptr);
 #endif
 }
 

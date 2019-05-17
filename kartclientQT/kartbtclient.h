@@ -46,6 +46,28 @@ class KartBtClient:public QObject
 
 
 
+       float get_vit_simu() { return vit_simu ; }
+
+       float get_couple_simu() { return couple_simu ; }
+
+       float get_courant_charge_batt() { return courant_charge_batt ; }
+
+       float get_puissance_totale() { return puissance_totale ; }
+
+       float get_tension_batt1() { return tension_batt1 ; }
+
+       float get_tension_batt2() { return tension_batt2 ; }
+
+       float get_tension_batt3() { return tension_batt3 ; }
+
+       float get_tension_batt4() { return tension_batt4 ; }
+
+       float get_charge_totale_batt() { return charge_totale_batt ; }
+
+       float get_courant_batt1() { return courant_batt1 ; }
+
+
+
 
    public  slots:
     void info(const QString& src, const QString& msg ) ;
@@ -62,7 +84,7 @@ class KartBtClient:public QObject
 
        QamTcpClient*		m_client ;
        QSocketNotifier*    m_notifier ;
-       float  couple_simu, cons_pente, masse_pilote, cons_couple;
+       float  couple_simu, cons_pente, masse_pilote, cons_couple, vit_simu, courant_charge_batt, puissance_totale, tension_batt1, tension_batt2, tension_batt3, tension_batt4, charge_totale_batt, courant_batt1;
 
        int mode_local_distant/*, masse_pilote*/;
 
