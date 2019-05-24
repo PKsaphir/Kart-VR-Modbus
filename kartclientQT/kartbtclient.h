@@ -7,6 +7,7 @@
 #include <QObject>
 #include <QSocketNotifier>
 #include <QTimer>
+#include <QDebug>
 #include <iostream>
 using namespace std ;
 
@@ -65,6 +66,9 @@ class KartBtClient:public QObject
        float get_charge_totale_batt() { return charge_totale_batt ; }
 
        float get_courant_batt1() { return courant_batt1 ; }
+
+
+
 
 
 
@@ -137,6 +141,9 @@ class KartBtClient:public QObject
        float getTensionBatt4();
 
        float getChargeTotaleBatt();
+
+
+
 
 
 

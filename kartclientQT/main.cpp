@@ -22,6 +22,13 @@ int main(int argc, char *argv[])
         bt->get_masse_pilote();
 
 
+
         QObject::connect(bt, SIGNAL(quit()), &app, SLOT(quit()) ) ;
+
+        /*float test1 = bt->get_masse_pilote();
+        qDebug("%f", test1);
+        test1 = bt->get_local_masse();
+        qDebug("%f", test1);*/
+
         return app.exec() ;
 }

@@ -1,7 +1,5 @@
 #include "kartbtclient.h"
 
-
-
 //version cliente classique
 KartBtClient::KartBtClient(const QString& configFile ,QObject* parent )
     : QObject(parent)
@@ -19,15 +17,16 @@ KartBtClient::KartBtClient(const QString& configFile ,QObject* parent )
     // client TCP
     m_client = new QamTcpClient( m_map, this ) ;
     m_client->sockConnect( m_map->host(), m_map->port() ) ;
-    cout<< "host distant :" << m_map->host().toStdString()  << "port " <<  m_map->port() << endl;
+    cout<< "Host distant : " << m_map->host().toStdString()  << "  Port " <<  m_map->port() << endl;
 
 
-     cout<< "etat connexion" << m_client->state();
+     cout<< "Etat connexion " << m_client->state();
     // intercepteur de commandes clavier
 
    m_notifier = new QSocketNotifier(fileno(stdin), QSocketNotifier::Read, this ) ;
      connect(m_notifier, SIGNAL(activated(int)), this, SLOT(readConsole()) ) ;
 
+    //cout << configFile.toStdString() << endl;
    int thing = 0;
 
 
@@ -35,7 +34,7 @@ KartBtClient::KartBtClient(const QString& configFile ,QObject* parent )
     {
         qSleep(1000);
         if(thing >= 5) {
-        cerr << "pb fichier csv non trouve" << endl;
+        cerr << "Pb fichier csv non trouve" << endl;
         exit(-1) ;
         }
         thing++;
@@ -46,12 +45,8 @@ KartBtClient::KartBtClient(const QString& configFile ,QObject* parent )
 
 }
 
-
 void KartBtClient::readConsole()
 {
-
-
-
 
     QTextStream in(stdin) ;
 
@@ -74,11 +69,12 @@ void KartBtClient::readConsole()
     }
     if(( parse.at(0) == "2" )){
 
-                    cout << "Couple " << qPrintable( QString::number(this->get_couple_simu(),'f',6) ) << " " << endl ;
-                    cout << "Couple " << qPrintable( QString::number(this->getCoupleSimu(),'f',6) ) << " " << endl ;
+                    cout << "Couple " << qPrintable( QString::number(this->get_couple_simu(),'f',6) ) << " % " << endl ;
+                    cout << "Couple " << qPrintable( QString::number(this->getCoupleSimu(),'f',6) ) << " % " << endl ;
     }
     if(( parse.at(0) == "3" )){
 
+                    //this->set_masse_pilote(this->getMasse_Pilote());
                     cout << "Masse " << qPrintable( QString::number(this->get_masse_pilote(),'f',6) ) << " kg " << endl ;
                     cout << "Masse " << qPrintable( QString::number(this->getMasse_Pilote(),'f',6) ) << " kg " << endl ;
     }
@@ -140,8 +136,8 @@ void KartBtClient::readConsole()
 
                     this->set_masse_pilote(parse.at(1).toFloat());
                     this->setMasse_Pilote(parse.at(1));
-        cout << "masse pilote  " << qPrintable(  QString::number(this ->get_masse_pilote() , 'f', 6)) << " kg" << endl;
-        cout << "masse pilote  " << qPrintable(  QString::number(this ->getMasse_Pilote() , 'f', 6)) << " kg" << endl;
+        cout << "Masse pilote  " << qPrintable(  QString::number(this ->get_masse_pilote() , 'f', 6)) << " kg" << endl;
+        cout << "Masse pilote  " << qPrintable(  QString::number(this ->getMasse_Pilote() , 'f', 6)) << " kg" << endl;
 
 
 
@@ -157,8 +153,8 @@ void KartBtClient::readConsole()
                     // ecriture consigne pente suppose être en distant (votre IHM...)  Cf csv
                     this->set_cons_pente(  parse.at(1).toFloat());
                     this->setConsignePente(  parse.at(1));
-        cout << "consigne pente  " << qPrintable(  QString::number(this ->get_cons_pente() , 'f', 6)) << "%" << endl;
-        cout << "consigne pente  " << qPrintable(  QString::number(this ->getConsignePente() , 'f', 6)) << "%" << endl;
+        cout << "Consigne pente  " << qPrintable(  QString::number(this ->get_cons_pente() , 'f', 6)) << "%" << endl;
+        cout << "Consigne pente  " << qPrintable(  QString::number(this ->getConsignePente() , 'f', 6)) << "%" << endl;
 
     }
     //erreur
@@ -171,8 +167,8 @@ void KartBtClient::readConsole()
     if(( parse.at(0) == "15" ) && ( parse.size() >= 2 )){    //attention 2 arguments seult sur ligne de commande !!  >=
 
                     this->set_mode(  parse.at(1).toInt());
-        cout << "local distant  " << qPrintable(  QString::number(this ->get_mode() , 'f', 6)) << " " << endl;
-        cout << "local distant  " << qPrintable(  QString::number(this ->getLocal_Distant() , 'f', 6)) << " " << endl;
+        cout << "Local Distant  " << qPrintable(  QString::number(this ->get_mode() , 'f', 6)) << " " << endl;
+        cout << "Local Distant  " << qPrintable(  QString::number(this ->getLocal_Distant() , 'f', 6)) << " " << endl;
 
     }
     //erreur
@@ -203,12 +199,12 @@ void KartBtClient::readConsole()
 
                                                              //PM Maj 9/5/18
 
-        cout << "courant decharge batteries  " << qPrintable(  QString::number( courant_decharge , 'f', 6)) << "A" << endl;
+        cout << "Courant decharge batteries  " << qPrintable(  QString::number( courant_decharge , 'f', 6)) << "A" << endl;
 
     }
     //erreur
     else if(( parse.at(0) == "17" ) && ( parse.size() >=2 )){
-        cerr << "entrez 17  " << endl;
+        cerr << "Entrez 17  " << endl;
 
     }
 
@@ -217,7 +213,7 @@ void KartBtClient::readConsole()
         emit quit() ;
     }
 
-    cout << "tapez votre choix : ou q pour quitter" << endl;
+    cout << "Tapez votre choix : ou q pour quitter" << endl;
 
     cout << "1 : Lecture vitesse simulateur " << endl;
     cout << "2 : Lecture couple " << endl;
@@ -312,17 +308,19 @@ float  KartBtClient::getCourantBatt()
 void KartBtClient::setMasse_Pilote(QString weight)
 {
 
-     this -> m_map->setRemoteValue(m_table, "masse_pilote",weight );
+    this -> m_map->setRemoteValue(m_table, "masse_pilote",weight );
+    //this -> m_map->setLocalValue(m_table, "masse_pilote",weight );
     //this -> m_map->setRemoteValue(m_table, "masse_ihm_pilote",weight );//modif pour test 11/10
-
 
 }
 
 float  KartBtClient::getMasse_Pilote()
 {
     return   this->m_map->remoteValue(m_table, "masse_pilote").toFloat();
+    //return   this->m_map->localValue(m_table, "masse_pilote").toFloat();
 
 }
+
 
 
 void KartBtClient::setConsignePente(QString pente)
@@ -358,7 +356,7 @@ float KartBtClient::getTensionBatt2()
 }
 float KartBtClient::getTensionBatt3()
 {
-    return   this->m_map->remoteValue(m_table, "tension_batt3").toFloat();
+    return   this->m_map->localValue(m_table, "tension_batt3").toFloat();
 }
 float KartBtClient::getTensionBatt4()
 {
